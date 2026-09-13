@@ -1,0 +1,37 @@
+services:
+  coupon-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: coupon-api
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/coupondb
+      - SPRING_DATASOURCE_USERNAME=coupon
+      - SPRING_DATASOURCE_PASSWORD=coupon
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:latest
+    container_name: coupon-postgres
+    environment:
+      POSTGRES_DB: coupondb
+      POSTGRES_USER: coupon
+      POSTGRES_PASSWORD: coupon
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U coupon -d coupondb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
