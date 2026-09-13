@@ -1,4 +1,4 @@
-package com.camargo.CouponAPI;
+package com.camargo.coupon;
 
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;

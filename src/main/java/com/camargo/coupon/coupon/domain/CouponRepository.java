@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public interface CouponRepository {
 
-    Optional<Coupon> findById(Long id);
+    Optional<Coupon> findById(UUID id);
 
     Coupon save(Coupon coupon);
 }

@@ -22,7 +22,7 @@ public class CouponRepositoryAdapter implements CouponRepository {
     }
 
     @Override
-    public Optional<Coupon> findById(Long id) {
+    public Optional<Coupon> findById(UUID id) {
         return repository.findById(id)
                 .map(mapper::toDomain);
     }

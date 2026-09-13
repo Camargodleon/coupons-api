@@ -1,4 +1,20 @@
 package com.camargo.coupon.shared.error;
 
-public class ErrorResponse {
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+import java.time.Instant;
+import java.util.List;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public record ErrorResponse(
+        Instant timestamp,
+        int status,
+        String error,
+        String message,
+        String path,
+        List<String> details
+) {
+    public ErrorResponse(Instant timestamp, int status, String error, String message, String path) {
+        this(timestamp, status, error, message, path, null);
+    }
 }

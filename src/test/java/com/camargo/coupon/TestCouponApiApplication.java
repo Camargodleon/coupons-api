@@ -1,6 +1,5 @@
-package com.camargo.CouponAPI;
+package com.camargo.coupon;
 
-import com.camargo.coupon.CouponApiApplication;
 import org.springframework.boot.SpringApplication;
 
 public class TestCouponApiApplication {

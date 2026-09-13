@@ -1,11 +1,13 @@
 package com.camargo.coupon.coupon.application.command;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 public record CreateCouponCommand(
         String code,
-        BigDecimal discount,
-        LocalDateTime validUntil
+        String description,
+        BigDecimal discountValue,
+        Instant expirationDate,
+        Boolean published
 ) {
 }
